@@ -36,6 +36,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 
@@ -154,7 +155,7 @@ public class DriverManager {
 		return screenshot2;
 	}
 
-//	@AfterMethod 																//--Use this For Local system
+	@AfterMethod 																//--Use this For Local system
 	public void closebrowser() {
 	WEB_DRIVER_THREAD.get().close();		
 	}
