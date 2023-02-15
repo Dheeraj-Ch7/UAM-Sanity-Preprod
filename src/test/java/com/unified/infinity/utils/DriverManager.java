@@ -155,13 +155,12 @@ public class DriverManager {
 		return screenshot2;
 	}
 
-	@AfterMethod 																//--Use this For Local system
+//	@AfterMethod 																//--Use this For Local system
 	public void closebrowser() {
 	WEB_DRIVER_THREAD.get().close();		
 	}
 
-
-//	@AfterSuite
+	@AfterSuite
 	public void sendEmail() {
 		
 		final String username = "c_praveenreddy.t@infinitylearn.com"; 
@@ -183,13 +182,27 @@ public class DriverManager {
 	        Message message = new MimeMessage(session);
 	        message.setFrom(new InternetAddress("c_praveenreddy.t@infinitylearn.com")); //From email
 	        message.setRecipients(Message.RecipientType.TO,
-	                InternetAddress.parse("c_praveenreddy.t@infinitylearn.com"+","+"c_praveenreddy.t@infinitylearn.com")); // To email
-	        message.setSubject("Automation Jenkins Email Report");
+	        		InternetAddress.parse("dheeraj.ch@infinitylearn.com"));
+	              /*  InternetAddress.parse("venkataramireddy@infinitylearn.com"+","+
+	                		              "anil.kommineni@infinitylearn.com"+","+ 
+	                		              "dheeraj.ch@infinitylearn.com"+","+ 
+	                		              "mohit.sharma@infinitylearn.com"+","+ 
+	                		              "ramesh.naidu@infinitylearn.com"+","+ 
+	                		              "ram.sb@infinitylearn.com"+","+ 
+	                		              "shwetabh.garg@infinitylearn.com"+","+              // To emailss
+	                		              "sivakumar.vaddi@infinitylearn.com"+","+ 
+	                		              "sivakuru.natarajan@infinitylearn.com"+","+ 
+	                		              "sowmika.venkatesh@infinitylearn.com"+","+ 
+	                		              "subramanyam.kasichayanula@infinitylearn.com"+","+ 
+	                		              "varsha.agarwal@infinitylearn.com"));;*/
+                                        
+	        
+	        message.setSubject("UAM Sanity Automation Report-Preprod");
 	        message.setText("PFA");
 	        
 	        //--------------------Folder--------------
 	        //C:\Users\Admin\eclipse-workspace\Pravin_PreProd\ExtentReports
-	        File dir1 = new File("C:\\Users\\Admin\\eclipse-workspace\\Pravin_PreProd\\ExtentReports");
+	        File dir1 = new File(System.getProperty("user.dir")+"\\ExtentReports");
 	        File[] folders = dir1.listFiles(File::isDirectory);
 	     // sort folders based on the last modified time
 	        Arrays.sort(folders, new Comparator<File>(){
@@ -205,7 +218,7 @@ public class DriverManager {
 	        
 	        
 	        //--------------------File----------------
-	        File dir = new File("C:\\Users\\Admin\\eclipse-workspace\\Pravin_PreProd\\ExtentReports\\"+ReportFolder);
+	        File dir = new File(System.getProperty("user.dir")+"\\ExtentReports\\"+ReportFolder);
 	        File[] files = dir.listFiles();
 
 	        // sort files based on the last modified time
@@ -225,7 +238,7 @@ public class DriverManager {
 	        Multipart multipart = new MimeMultipart();
 	        multipart.addBodyPart(messageBodyPart);
 	        messageBodyPart = new MimeBodyPart();
-	        String fileName1 = "C:\\Users\\Admin\\eclipse-workspace\\Pravin_PreProd\\ExtentReports\\"+ReportFolder+"\\"+FileName;
+	        String fileName1 = System.getProperty("user.dir")+"\\ExtentReports\\"+ReportFolder+"\\"+FileName;
 	        DataSource source = new FileDataSource(fileName1);
 	        messageBodyPart.setDataHandler(new DataHandler(source));
 	        messageBodyPart.setFileName(fileName1);
@@ -239,5 +252,4 @@ public class DriverManager {
 	        throw new RuntimeException(e);
 	    }
 	}
-	
 }

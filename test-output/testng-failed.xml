@@ -5,11 +5,12 @@
     <classes>
       <class name="com.unified.infinity.uitest.admin.UAMSanity">
         <methods>
-          <include name="ChangeProfilePicture" invocation-numbers="0"/>
           <include name="methodsetup"/>
           <include name="EndMethod"/>
+          <include name="SignInWithPassword" invocation-numbers="0"/>
           <include name="endSuite"/>
           <include name="setup"/>
+          <include name="closebrowser"/>
         </methods>
       </class> <!-- com.unified.infinity.uitest.admin.UAMSanity -->
     </classes>
