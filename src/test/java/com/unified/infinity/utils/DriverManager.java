@@ -155,7 +155,7 @@ public class DriverManager {
 		return screenshot2;
 	}
 
-//	@AfterMethod 																//--Use this For Local system
+	@AfterMethod 																//--Use this For Local system
 	public void closebrowser() {
 	WEB_DRIVER_THREAD.get().close();		
 	}
